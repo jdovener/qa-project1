@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div>
+    <h1>Orders</h1>
+    </div>
+    {% for order in order_list %}
+    <div>
+        <p>{{ order.id }}) Customer ID: {{ order.cust_id }} Order Placed:  {{ order.date_ordered }} Total: {{ order.total }}</p>
+        
+        {% if order.order_status == False %}
+        <span>Pending</span>
+    {% else %}
+        <span>Delivered</span>
+    {% endif %}
+    <div>
+    <a href="/update_order/{{ order.id }}">Update</a>
+    <a href="/delete_order/{{ order.id }}">Delete</a>
+    {% endfor %}
+    </div>
+    <form action="/add_order" method="post">
+        <div>
+            <h2>Add order:</h2>
+            <input type="date" name="date_ordered" placeholder="Enter order date...">
+            <input type="text" name="total" placeholder="Enter total...">
+            <br>
+            <button type="submit">Add</button>
+        </div>
+    </form>
+</body>
+</html>

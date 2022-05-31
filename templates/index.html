@@ -14,9 +14,9 @@
 
         {% if product.quantity == False %}
         <span>Out of stock</span>
-    {% else %}
+        {% else %}
         <span>In Stock</span>
-    {% endif %}
+        {% endif %}
     <div>
     <a href="/update/{{ product.id }}">Update</a>
     <a href="/delete/{{ product.id }}">Delete</a>
@@ -24,7 +24,7 @@
     </div>
     <form action="/add" method="post">
         <div>
-            <h2 for="title">Add products:</h2>
+            <h2>Add products:</h2>
             <input type="text" name="title" placeholder="Enter title...">
             <input type="text" name="genre" placeholder="Enter genre...">
             <input type="number" step="0.01" name="price" placeholder="Enter price...">

@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from datetime import date
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+# class definitions
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,6 +24,14 @@ class Customer(db.Model):
     address = db.Column(db.String(100))
     postcode = db.Column(db.String(100))
     phone = db.Column(db.String(20))
+    orders = db.relationship("Order", backref="customer")
+
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date_ordered = db.Column(db.Date)
+    total = db.Column(db.Float)
+    order_status = db.Column(db.Boolean)
+    cust_id = db.Column(db.Integer, db.ForeignKey("customer.id"))
 
 # Homepage routes
 
@@ -90,6 +101,38 @@ def delete_cust(customer_id):
     db.session.delete(customer)
     db.session.commit()
     return redirect(url_for("customers"))
+
+# Orders routes
+
+@app.route('/orders')
+def orders():
+    order_list = Order.query.all()
+    print(order_list)
+    return render_template('orders.html', order_list=order_list)
+
+@app.route("/add_order", methods=["POST"])
+def add_order():
+    date_ordered = date(*map(int, request.form.get("date_ordered").split("-")))
+    total = float(request.form.get("total"))
+    order_status = request.form.get("order_status")
+    new_order = Order(date_ordered=date_ordered, total=total, order_status=False)
+    db.session.add(new_order)
+    db.session.commit()
+    return redirect(url_for("orders"))
+
+@app.route("/update_order/<int:order_id>")
+def update_order(order_id):
+    order = Order.query.filter_by(id=order_id).first()
+    order.order_status = not order.order_status
+    db.session.commit()
+    return redirect(url_for("orders"))
+
+@app.route("/delete_order/<int:order_id>")
+def delete_order(order_id):
+    order = Order.query.filter_by(id=order_id).first()
+    db.session.delete(order)
+    db.session.commit()
+    return redirect(url_for("orders"))
 
 if __name__ == "__main__":
     db.create_all()
