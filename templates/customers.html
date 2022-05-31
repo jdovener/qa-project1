@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div>
+    <h1>Customers</h1>
+    </div>
+    {% for customer in cust_list %}
+    <div>
+        <p>{{ customer.id }}) First Name:  {{ customer.f_name }} Surname: {{ customer.l_name }} Email: {{ customer.email }} Address: {{ customer.address }} Post code: {{ customer.postcode }} Phone {{ customer.phone }}</p>
+    <div>
+    <a href="/delete_cust/{{ customer.id }}">Delete</a>
+    {% endfor %}
+    </div>
+    <form action="/add_cust" method="post">
+        <div>
+            <h2 for="f_name">Add customers:</h2>
+            <input type="text" name="f_name" placeholder="Enter first name...">
+            <input type="text" name="l_name" placeholder="Enter surname...">
+            <input type="text" name="email" placeholder="Enter email...">
+            <input type="text" name="address" placeholder="Enter address...">
+            <input type="text" name="postcode" placeholder="Enter post code...">
+            <input type="text" name="phone" placeholder="Enter phone...">
+            <br>
+            <button type="submit">Add</button>
+        </div>
+    </form>
+</body>
+</html>
