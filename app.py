@@ -134,6 +134,8 @@ def delete_order(order_id):
     db.session.commit()
     return redirect(url_for("orders"))
 
+# run app code
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True, host='0.0.0.0', port=5000)
