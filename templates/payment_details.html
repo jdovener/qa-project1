@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div>
+    <h1>Payment Details</h1>
+    </div>
+    {% for payment in payment_list %}
+    <div>
+        <p>Customer ID: {{ payment.cust_id }} Account Number: {{ payment.account_number }} Sort Code: {{ payment.sort_code }} Expiry Date: {{ payment.exp_date }} CVV: {{ payment.cvv }}</p>
+    <div>
+    <a href="/delete_payment/{{ payment.account_number }}">Delete</a>
+    {% endfor %}
+    </div>
+    <form action="/add_payment" method="post">
+        <div>
+            <h2>Add payment details:</h2>
+            <input type="text" name="account_number" placeholder="Enter account number...">
+            <input type="text" name="sort_code" placeholder="Enter sort_code...">
+            <input type="date" name="exp_date" placeholder="Enter expiry date...">
+            <input type="text" name="cvv" placeholder="Enter CVV...">
+            <br>
+            <button type="submit">Add</button>
+        </div>
+    </form>
+</body>
+</html>

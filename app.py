@@ -25,12 +25,20 @@ class Customer(db.Model):
     postcode = db.Column(db.String(100))
     phone = db.Column(db.String(20))
     orders = db.relationship("Order", backref="customer")
+    payments = db.relationship("Payment", backref="customer")
 
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_ordered = db.Column(db.Date)
     total = db.Column(db.Float)
     order_status = db.Column(db.Boolean)
+    cust_id = db.Column(db.Integer, db.ForeignKey("customer.id"))
+
+class Payment(db.Model):
+    account_number = db.Column(db.Integer, primary_key=True)
+    sort_code = db.Column(db.Integer)
+    exp_date = db.Column(db.Date)
+    cvv = db.Column(db.Integer)
     cust_id = db.Column(db.Integer, db.ForeignKey("customer.id"))
 
 # Homepage routes
@@ -89,12 +97,6 @@ def add_cust():
     db.session.commit()
     return redirect(url_for("customers"))
 
-@app.route("/update_cust/<int:customer_id>")
-def update_cust(customer_id):
-    customer = Customer.query.filter_by(id=customer_id).first()
-    db.session.commit()
-    return redirect(url_for("customers"))
-
 @app.route("/delete_cust/<int:customer_id>")
 def delete_cust(customer_id):
     customer = Customer.query.filter_by(id=customer_id).first()
@@ -133,6 +135,32 @@ def delete_order(order_id):
     db.session.delete(order)
     db.session.commit()
     return redirect(url_for("orders"))
+
+# Payment details routes
+
+@app.route('/payment_details')
+def payments():
+    payment_list = Payment.query.all()
+    print(payment_list)
+    return render_template('payment_details.html', payment_list=payment_list)
+
+@app.route("/add_payment", methods=["POST"])
+def add_payment():
+    account_number = request.form.get("account_number")
+    sort_code = request.form.get("sort_code")
+    exp_date = date(*map(int, request.form.get("exp_date").split("-")))
+    cvv = request.form.get("cvv")
+    new_payment = Payment(account_number=account_number, sort_code=sort_code, exp_date=exp_date, cvv=cvv)
+    db.session.add(new_payment)
+    db.session.commit()
+    return redirect(url_for("payments"))
+
+@app.route("/delete_payment/<int:account_number>")
+def delete_payment(account_number):
+    payment = Payment.query.filter_by(account_number=account_number).first()
+    db.session.delete(payment)
+    db.session.commit()
+    return redirect(url_for("payments"))
 
 # run app code
 
