@@ -6,31 +6,9 @@
 </head>
 <body>
     <div>
-    <h1>Products</h1>
+        <p>Welcome to</p>
+        <h1>Games Shop</h1>
+        <!-- <p>Please use navigation bar above</p> -->
     </div>
-    {% for product in product_list %}
-    <div>
-        <p>{{ product.id }}) Title:  {{ product.title }} Genre: {{ product.genre }} Price: £ {{ product.price }}</p>
-
-        {% if product.quantity == False %}
-        <span>Out of stock</span>
-        {% else %}
-        <span>In Stock</span>
-        {% endif %}
-    <div>
-    <a href="/update/{{ product.id }}">Update</a>
-    <a href="/delete/{{ product.id }}">Delete</a>
-    {% endfor %}
-    </div>
-    <form action="/add" method="post">
-        <div>
-            <h2>Add products:</h2>
-            <input type="text" name="title" placeholder="Enter title...">
-            <input type="text" name="genre" placeholder="Enter genre...">
-            <input type="number" step="0.01" name="price" placeholder="Enter price...">
-            <br>
-            <button type="submit">Add</button>
-        </div>
-    </form>
 </body>
 </html>

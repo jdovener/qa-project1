@@ -41,15 +41,19 @@ class Payment(db.Model):
     cvv = db.Column(db.Integer)
     cust_id = db.Column(db.Integer, db.ForeignKey("customer.id"))
 
-# Homepage routes
+# Homepage route
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+# Products routes
+
+@app.route('/products')
+def products():
     product_list = Product.query.all()
     print(product_list)
-    return render_template('index.html', product_list=product_list)
-
-# Products ADD PAGE ROUTE
+    return render_template('products.html', product_list=product_list)
 
 @app.route("/add", methods=["POST"])
 def add():
