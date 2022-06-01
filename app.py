@@ -33,6 +33,7 @@ class Order(db.Model):
     total = db.Column(db.Float)
     order_status = db.Column(db.Boolean)
     cust_id = db.Column(db.Integer, db.ForeignKey("customer.id"))
+    product_id = db.Column(db.Integer, db.ForeignKey("product.id"))
 
 class Payment(db.Model):
     account_number = db.Column(db.Integer, primary_key=True)
@@ -121,7 +122,9 @@ def add_order():
     date_ordered = date(*map(int, request.form.get("date_ordered").split("-")))
     total = float(request.form.get("total"))
     order_status = request.form.get("order_status")
-    new_order = Order(date_ordered=date_ordered, total=total, order_status=False)
+    cust_id = int(request.form.get("cust_id"))
+    product_id = int(request.form.get("product_id"))
+    new_order = Order(date_ordered=date_ordered, total=total, order_status=False, cust_id=cust_id, product_id=product_id)
     db.session.add(new_order)
     db.session.commit()
     return redirect(url_for("orders"))

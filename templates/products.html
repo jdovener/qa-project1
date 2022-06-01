@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,46 +17,53 @@
     </nav>
     <!-- nav bar -->
     <!-- Semantic import -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <!-- Semantic import -->
 </head>
+
 <body style="background-color: #b7b7bd;">
     <div>
-    <h1 class="ui center aligned header">Products</h1>
+        <h1 class="ui center aligned header">Products</h1>
     </div>
+
     {% for product in product_list %}
     <div style="background-color: #aeaeb4;" class="ui segment"></div>
         <div style="font-size: 20px;">
-        <p style="margin-left: 50px;">{{ product.id }}) Title: {{ product.title }} | Genre: {{ product.genre }} | Price: £{{ product.price }}</p>
+            <p style="margin-left: 50px;">Product ID: {{ product.id }} | Title: {{ product.title }} | Genre: {{ product.genre }} | Price: £{{ product.price }}</p>
         </div>
         <br>
         {% if product.quantity == False %}
-        <span style="margin-left: 50px;" class="ui red circular label" >Out of stock</span>
+            <span style="margin-left: 50px;" class="ui red circular label" >Out of stock</span>
         {% else %}
-        <span style="margin-left: 50px;" class="ui green circular label">In Stock</span>
+            <span style="margin-left: 50px;" class="ui green circular label">In Stock</span>
         {% endif %}
     <div>
-        <br>
+    <br>
     <a style="margin-left: 50px;" class="ui blue button" href="/update/{{ product.id }}">Update</a>
     <a class="ui red button" href="/delete/{{ product.id }}">Delete</a>
     {% endfor %}
     </div>
+
     <div style="background-color: #aeaeb4;" class="ui segment"></div>
+    
     <div style="margin-left: 20px;">
     <form action="/add" method="post">
         <div>
             <h2>Add products:</h2>
             <input type="text" name="title" placeholder="Enter title...">
+            <p>Title</p>
             <input type="text" name="genre" placeholder="Enter genre...">
+            <p>Genre</p>
             <input type="number" step="0.01" name="price" placeholder="Enter price...">
-            <br>
-            <button type="submit">Add</button>
+            <p>Price</p>
+            <button class="ui blue button" type="submit">Add</button>
         </div>
     <br>
     <br>
     <br>
     </form>
     </div>
+    
 </body>
 </html>
