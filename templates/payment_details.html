@@ -6,27 +6,36 @@
     <!-- nav bar -->
     <nav>
         <br>
-        <div>
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/customers">Customers</a>
-            <a href="/orders">Orders</a>
-            <a href="/payment_details">Payment Details</a>
+        <div style="margin-left: 20px;">
+            <a class="ui blue button" href="/">Home</a>
+            <a class="ui blue button" href="/products">Products</a>
+            <a class="ui blue button" href="/customers">Customers</a>
+            <a class="ui blue button" href="/orders">Orders</a>
+            <a class="ui blue button" href="/payment_details">Payment Details</a>
         </div>
     </nav>
     <!-- nav bar -->
+    <!-- Semantic import -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <!-- Semantic import -->
 </head>
-<body>
+<body style="background-color: #b7b7bd;">
     <div>
-    <h1>Payment Details</h1>
+    <h1 class="ui center aligned header">Payment Details</h1>
     </div>
     {% for payment in payment_list %}
-    <div>
-        <p>Customer ID: {{ payment.cust_id }} Account Number: {{ payment.account_number }} Sort Code: {{ payment.sort_code }} Expiry Date: {{ payment.exp_date }} CVV: {{ payment.cvv }}</p>
-    <div>
-    <a href="/delete_payment/{{ payment.account_number }}">Delete</a>
+    <div style="background-color: #aeaeb4;" class="ui segment"></div>
+    <div style="font-size: 20px;">
+        <p style="margin-left: 50px;">Customer ID: {{ payment.cust_id }} Account Number: {{ payment.account_number }} Sort Code: {{ payment.sort_code }} Expiry Date: {{ payment.exp_date }} CVV: {{ payment.cvv }}</p>
+    </div>
+    <br>
+        <div>
+    <a style="margin-left: 50px;" class="ui red button" href="/delete_payment/{{ payment.account_number }}">Delete</a>
     {% endfor %}
     </div>
+    <div style="background-color: #aeaeb4;" class="ui segment"></div>
+    <div style="margin-left: 20px;">
     <form action="/add_payment" method="post">
         <div>
             <h2>Add payment details:</h2>
@@ -38,5 +47,6 @@
             <button type="submit">Add</button>
         </div>
     </form>
+</div>
 </body>
 </html>

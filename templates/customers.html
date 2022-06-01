@@ -6,27 +6,36 @@
     <!-- nav bar -->
     <nav>
         <br>
-        <div>
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/customers">Customers</a>
-            <a href="/orders">Orders</a>
-            <a href="/payment_details">Payment Details</a>
+        <div style="margin-left: 20px;">
+            <a class="ui blue button" href="/">Home</a>
+            <a class="ui blue button" href="/products">Products</a>
+            <a class="ui blue button" href="/customers">Customers</a>
+            <a class="ui blue button" href="/orders">Orders</a>
+            <a class="ui blue button" href="/payment_details">Payment Details</a>
         </div>
     </nav>
     <!-- nav bar -->
+    <!-- Semantic import -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <!-- Semantic import -->
 </head>
-<body>
+<body style="background-color: #b7b7bd;">
     <div>
-    <h1>Customers</h1>
+    <h1 class="ui center aligned header">Customers</h1>
     </div>
     {% for customer in cust_list %}
+    <div style="background-color: #aeaeb4;" class="ui segment"></div>
+    <div style="font-size: 20px;">
+        <p style="margin-left: 50px;">{{ customer.id }}) First Name:  {{ customer.f_name }} Surname: {{ customer.l_name }} Email: {{ customer.email }} Address: {{ customer.address }} Post code: {{ customer.postcode }} Phone {{ customer.phone }}</p>
+    </div>
+    <br>
     <div>
-        <p>{{ customer.id }}) First Name:  {{ customer.f_name }} Surname: {{ customer.l_name }} Email: {{ customer.email }} Address: {{ customer.address }} Post code: {{ customer.postcode }} Phone {{ customer.phone }}</p>
-    <div>
-    <a href="/delete_cust/{{ customer.id }}">Delete</a>
+    <a style="margin-left: 50px;" class="ui red button" href="/delete_cust/{{ customer.id }}">Delete</a>
     {% endfor %}
     </div>
+    <div style="background-color: #aeaeb4;" class="ui segment"></div>
+    <div style="margin-left: 20px;">
     <form action="/add_cust" method="post">
         <div>
             <h2>Add customers:</h2>
@@ -40,5 +49,6 @@
             <button type="submit">Add</button>
         </div>
     </form>
+    </div>
 </body>
 </html>

@@ -6,34 +6,43 @@
     <!-- nav bar -->
     <nav>
         <br>
-        <div>
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/customers">Customers</a>
-            <a href="/orders">Orders</a>
-            <a href="/payment_details">Payment Details</a>
+        <div style="margin-left: 20px;">
+            <a class="ui blue button" href="/">Home</a>
+            <a class="ui blue button" href="/products">Products</a>
+            <a class="ui blue button" href="/customers">Customers</a>
+            <a class="ui blue button" href="/orders">Orders</a>
+            <a class="ui blue button" href="/payment_details">Payment Details</a>
         </div>
     </nav>
     <!-- nav bar -->
+    <!-- Semantic import -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <!-- Semantic import -->
 </head>
-<body>
+<body style="background-color: #b7b7bd;">
     <div>
-    <h1>Orders</h1>
+    <h1 class="ui center aligned header">Orders</h1>
     </div>
     {% for order in order_list %}
-    <div>
-        <p>Order ID: {{ order.id }} Customer ID: {{ order.cust_id }} Order Placed:  {{ order.date_ordered }} Total: {{ order.total }}</p>
-
+    <div style="background-color: #aeaeb4;" class="ui segment"></div>
+    <div style="font-size: 20px;">
+        <p style="margin-left: 50px;">Order ID: {{ order.id }} Customer ID: {{ order.cust_id }} Order Placed:  {{ order.date_ordered }} Total: {{ order.total }}</p>
+    </div>
+    <br>
         {% if order.order_status == False %}
-        <span>Pending</span>
+        <span style="margin-left: 50px;" class="ui yellow circular label">Pending</span>
         {% else %}
-        <span>Delivered</span>
+        <span style="margin-left: 50px;" class="ui green circular label">Delivered</span>
         {% endif %}
     <div>
-    <a href="/update_order/{{ order.id }}">Update</a>
-    <a href="/delete_order/{{ order.id }}">Delete</a>
+        <br>
+    <a style="margin-left: 50px;" class="ui blue button" href="/update_order/{{ order.id }}">Update</a>
+    <a class="ui red button" href="/delete_order/{{ order.id }}">Delete</a>
     {% endfor %}
     </div>
+    <div style="background-color: #aeaeb4;" class="ui segment"></div>
+    <div style="margin-left: 20px;">
     <form action="/add_order" method="post">
         <div>
             <h2>Add order:</h2>
@@ -43,5 +52,6 @@
             <button type="submit">Add</button>
         </div>
     </form>
+</div>
 </body>
 </html>

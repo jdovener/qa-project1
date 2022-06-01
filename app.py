@@ -64,21 +64,21 @@ def add():
     new_product = Product(title=title, genre=genre, price=price, quantity=True)
     db.session.add(new_product)
     db.session.commit()
-    return redirect(url_for("index"))
+    return redirect(url_for("products"))
 
 @app.route("/update/<int:product_id>")
 def update(product_id):
     product = Product.query.filter_by(id=product_id).first()
     product.quantity = not product.quantity
     db.session.commit()
-    return redirect(url_for("index"))
+    return redirect(url_for("products"))
 
 @app.route("/delete/<int:product_id>")
 def delete(product_id):
     product = Product.query.filter_by(id=product_id).first()
     db.session.delete(product)
     db.session.commit()
-    return redirect(url_for("index"))
+    return redirect(url_for("products"))
 
 # Customers routes
 
