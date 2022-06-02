@@ -21,11 +21,11 @@ This GitHub repository contains my deliverable files for the QA DevOps fundament
 * Clear documentation must be made.
 
 ## Project Design:
-The app I have chosen to build is a video games shop product and customer information tracking system. This would allow employees of the shop to: 
-Add products, customer details, payment details and order details to a database (create functionality).
-View products, customer details, payment details and order details in a database (read functionality).
-Update specific products to show if they are in stock or out of stock, update order details to show if they are pending or delivered (update functionality).
-Delete records of products, customer details and payment details from the database (delete functionality).
+The app I have chosen to build is a video games shop product and customer information tracking system. This would allow employees of the shop to:  
+Add products, customer details, payment details and order details to a database (create functionality).  
+View products, customer details, payment details and order details in a database (read functionality).  
+Update specific products to show if they are in stock or out of stock, update order details to show if they are pending or delivered (update functionality).  
+Delete records of products, customer details and payment details from the database (delete functionality).  
 The database for the MVP of this project is comprised of 4 tables: Products, Customers, Orders, Payment details. The database features 2 one-to-many relationships. The ERD for this MVP is shown below:
 
 ![ERD](https://github.com/jdovener/qa-project1/blob/dev/images/ERD.png)
@@ -49,9 +49,9 @@ The user is able to use the nav bar which provides links to alternate pages. The
 
 ![Products](https://github.com/jdovener/qa-project1/blob/dev/images/Products.png)
 
-The Products page shows all products currently entered into the database. On this page the user can: 
-Add products by populating the forms at the bottom of the page and pressing the 'Add' button. 
-Update the status of a product to 'In Stock' or 'Out of stock' by pressing the 'Update' button beneath each entry. This is represented by either a green label or a red label beneath the product entry.
+The Products page shows all products currently entered into the database. On this page the user can:  
+Add products by populating the forms at the bottom of the page and pressing the 'Add' button.  
+Update the status of a product to 'In Stock' or 'Out of stock' by pressing the 'Update' button beneath each entry. This is represented by either a green label or a red label beneath the product entry.  
 Delete product entries by pressing the 'Delete' button beneath each entry.
 
 ---
@@ -60,8 +60,8 @@ The Customers page is shown below:
 
 ![Customers](https://github.com/jdovener/qa-project1/blob/dev/images/Customers.png)
 
-The Customers page shows all customers currently entered into the database. On this page the user can: 
-Add customers by populating the forms at the bottom of the page and pressing the 'Add' button. 
+The Customers page shows all customers currently entered into the database. On this page the user can:  
+Add customers by populating the forms at the bottom of the page and pressing the 'Add' button.  
 Delete customer entries by pressing the 'Delete' button beneath each entry.
 
 ---
@@ -70,12 +70,12 @@ The Orders page is shown below:
 
 ![Orders](https://github.com/jdovener/qa-project1/blob/dev/images/Orders.png)
 
-The Orders page shows all orders currently entered into the database. On this page the user can: 
-Add orders by populating the forms at the bottom of the page and pressing the 'Add' button. 
-Update the status of an order to 'Pending' or 'Delivered' by pressing the 'Update' button beneath each entry. This is represented by either a yellow label or a green label beneath the product entry.
-Delete product entries by pressing the 'Delete' button beneath each entry.
-
-The 'Customer ID' field is a foreign key from the Customers table in the database, this must be populated with an existing ID present in the Customer table or the app will not allow entry.
+The Orders page shows all orders currently entered into the database. On this page the user can:  
+Add orders by populating the forms at the bottom of the page and pressing the 'Add' button.  
+Update the status of an order to 'Pending' or 'Delivered' by pressing the 'Update' button beneath each entry. This is represented by either a yellow label or a green label beneath the product entry.  
+Delete product entries by pressing the 'Delete' button beneath each entry.  
+  
+The 'Customer ID' field is a foreign key from the Customers table in the database, this must be populated with an existing ID present in the Customer table or the app will not allow entry.  
 The 'Product ID' field is a foreign key from the Products table in the database, this must be populated with an existing ID present in the Product table or the app will not allow entry.
 
 ---
@@ -84,10 +84,10 @@ The Payment Details page is shown below:
 
 ![Payment Details](https://github.com/jdovener/qa-project1/blob/dev/images/Payment%20Details.png)
 
-The Payment Details page shows all customer payment details currently entered into the database. On this page the user can: 
-Add customer payment details by populating the forms at the bottom of the page and pressing the 'Add' button. 
-Delete customer payment details entries by pressing the 'Delete' button beneath each entry.
-
+The Payment Details page shows all customer payment details currently entered into the database. On this page the user can:  
+Add customer payment details by populating the forms at the bottom of the page and pressing the 'Add' button.  
+Delete customer payment details entries by pressing the 'Delete' button beneath each entry.  
+  
 The 'Customer ID' field is a foreign key from the Customers table in the database, this must be populated with an existing ID present in the Customer table or the app will not allow entry.
 
 # Testing
@@ -114,6 +114,9 @@ INCOMPLETE
     * New file structure. Refactored code to seperate models, routes and init file.
     * Began using GCP SQL database as opposed to sqlite database.
     * Minor bug fix on payment page. Customer ID field is now displaying.
+
+* 02/06/2022
+    * Improved readability of README.md compilation by adding line breaks
 
 # Known Issues
 
