@@ -28,26 +28,26 @@ Update specific products to show if they are in stock or out of stock, update or
 Delete records of products, customer details and payment details from the database (delete functionality).
 The database for the MVP of this project is comprised of 4 tables: Products, Customers, Orders, Payment details. The database features 2 one-to-many relationships. The ERD for this MVP is shown below:
 
-![ERD]()
+![ERD](https://github.com/jdovener/qa-project1/blob/dev/images/ERD.png)
 
 The structure was updated to include an 'email' field and 'postcode' field in the Customer table. The 'total' field in the Orders table was changed to 'price' as only one item can be added to an order. A 'product_id' field (a foreign key from the Products table) was also added to the Orders table. The current ERD is shown below:
 
-![Current ERD]()
+![Current ERD](https://github.com/jdovener/qa-project1/blob/dev/images/Current%20ERD.png)
 
 In the future, the app would ideally have the ability to add more than one product to each order, this would result in a small change to the ERD. The 'price' field in the Orders table would be changed to a 'total' field. The future ERD is shown below:
 
-![Future ERD]()
+![Future ERD](https://github.com/jdovener/qa-project1/blob/dev/images/Future%20ERD.png)
 
 # The App:
 Upon opening the app, the user is presented with the homepage:
 
-![Homepage]()
+![Homepage](https://github.com/jdovener/qa-project1/blob/dev/images/Homepage.png)
 
 The user is able to use the nav bar which provides links to alternate pages. The product page is shown below:
 
 ---
 
-![Products]()
+![Products](https://github.com/jdovener/qa-project1/blob/dev/images/Products.png)
 
 The Products page shows all products currently entered into the database. On this page the user can: 
 Add products by populating the forms at the bottom of the page and pressing the 'Add' button. 
@@ -58,7 +58,7 @@ Delete product entries by pressing the 'Delete' button beneath each entry.
 
 The Customers page is shown below:
 
-![Customers]()
+![Customers](https://github.com/jdovener/qa-project1/blob/dev/images/Customers.png)
 
 The Customers page shows all customers currently entered into the database. On this page the user can: 
 Add customers by populating the forms at the bottom of the page and pressing the 'Add' button. 
@@ -68,7 +68,7 @@ Delete customer entries by pressing the 'Delete' button beneath each entry.
 
 The Orders page is shown below:
 
-![Orders]()
+![Orders](https://github.com/jdovener/qa-project1/blob/dev/images/Orders.png)
 
 The Orders page shows all orders currently entered into the database. On this page the user can: 
 Add orders by populating the forms at the bottom of the page and pressing the 'Add' button. 
@@ -82,7 +82,7 @@ The 'Product ID' field is a foreign key from the Products table in the database,
 
 The Payment Details page is shown below:
 
-![Payment Details]()
+![Payment Details](https://github.com/jdovener/qa-project1/blob/dev/images/Payment%20Details.png)
 
 The Payment Details page shows all customer payment details currently entered into the database. On this page the user can: 
 Add customer payment details by populating the forms at the bottom of the page and pressing the 'Add' button. 
