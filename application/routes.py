@@ -35,7 +35,7 @@ def update(product_id):
     db.session.commit()
     return redirect(url_for("products"))
 
-@app.route("/delete/<int:product_id>")
+@app.route("/delete/<int:product_id>", methods=["PUT"])
 def delete(product_id):
     product = Product.query.filter_by(id=product_id).first()
     db.session.delete(product)
