@@ -14,8 +14,8 @@ class TestBase(TestCase):
         return app
 
     def setUp(self):
-        test1 = Product(title="a")
-        test2 = Product(genre="a")
+        test1 = Product(title="producta")
+        test2 = Product(title="productb")
         db.create_all()
         db.session.add(test1)
         db.session.add(test2)
@@ -27,15 +27,23 @@ class TestBase(TestCase):
 
 class TestViewProduct(TestBase):
     def test_get_product(self):
-        response = self.client.get(url_for('index'))
+        response = self.client.get(url_for('products'))
         self.assert200(response)
-        self.assertIn(b'sample data', response.data)
+        self.assertIn(b'producta', response.data)
 
-class TestAddItem(TestBase):
-    def test_post_add(self):
+class TestAddProduct(TestBase):
+    def test_post_product(self):
         response = self.client.post(url_for('add'),
-        data = dict(add="This has been added in a test"),
+        data = dict(title="pancakes"),
         follow_redirects = True
         )
         self.assert200(response)
-        self.assert300(b'added in a test', response.data)
+        self.assertIn(b'pancakes', response.data)
+
+class TestUpdateProduct(TestBase):
+    def test_put_product(self):
+        response = self.client.put(url_for('update', product_id=1),
+        data = dict(title="pancakes"),
+        follow_redirects = True
+        )
+        self.assert200(response)

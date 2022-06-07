@@ -28,7 +28,7 @@ def add():
     db.session.commit()
     return redirect(url_for("products"))
 
-@app.route("/update/<int:product_id>")
+@app.route("/update/<int:product_id>", methods=["PUT"])
 def update(product_id):
     product = Product.query.filter_by(id=product_id).first()
     product.quantity = not product.quantity
