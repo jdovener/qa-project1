@@ -29,6 +29,13 @@ class TestBase(TestCase):
         db.session.remove()
         db.drop_all()
 
+# Index route test
+
+class TestViewIndex(TestBase):
+    def test_get_index(self):
+        response = self.client.get(url_for('index'))
+        self.assert200(response)
+
 # Product routes tests
 
 class TestViewProduct(TestBase):
@@ -52,13 +59,13 @@ class TestUpdateProduct(TestBase):
         data = dict(title="pancakes"),
         follow_redirects = True
         )
-        self.assert200(response)
+        assert response.status_code == 405
 
-# class TestDeleteProduct(TestBase):
-#     def test_delete_product(self):
-#         response = self.client.delete(url_for('delete', product_id=1)
-#         )
-#         self.assert405(response)
+class TestDeleteProduct(TestBase):
+    def test_delete_product(self):
+        response = self.client.delete(url_for('delete', product_id=1)
+        )
+        assert response.status_code == 302
 
 # Customer routes tests
 
@@ -77,11 +84,11 @@ class TestAddCustomer(TestBase):
         self.assert200(response)
         self.assertIn(b'Earl', response.data)
 
-# class TestDeleteCustomer(TestBase):
-#     def test_delete_customer(self):
-#         response = self.client.delete(url_for('delete_cust', customer_id=1)
-#         )
-#         self.assert405(response)
+class TestDeleteCustomer(TestBase):
+    def test_delete_customer(self):
+        response = self.client.delete(url_for('delete_cust', customer_id=1)
+        )
+        assert response.status_code == 302
 
 # Orders routes tests
 
@@ -91,15 +98,15 @@ class TestViewOrder(TestBase):
         self.assert200(response)
         self.assertIn(b'10', response.data)
 
-# class TestAddOrder(TestBase):
-#     def test_post_order(self):
-#         response = self.client.post(url_for('add_order'),
-#         data = dict(total=10),
-#         follow_redirects = True
-#         )
-#         self.assert500(response)
-#         self.assertIn(b'10', response.data)
-
+class TestAddOrder(TestBase):
+    def test_post_order(self):
+        response = self.client.post(url_for('add_order'),
+        data = dict(total=10),
+        follow_redirects = True
+        )
+        self.assert500(response)
+        test_order = Order.query.filter_by(total=10).first()
+        assert test_order.total == 10
 
 # class TestUpdateOrder(TestBase):
 #     def test_put_order(self):

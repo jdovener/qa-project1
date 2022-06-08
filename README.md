@@ -4,10 +4,11 @@ This GitHub repository contains my deliverable files for the QA DevOps fundament
 ## Contents:
 * [Project Requirements](#Project-Requirements)
 * [Project Design](#Project-Design)
+* [Risk Assessment](#Risk-Assessment)
 * [The App](#The-App)
 * [Testing](#Testing) INCOMPLETE
 * [CI Pipeline](#CI-Pipeline) INCOMPLETE
-* [Risk Assessment](#Risk-Assessment)
+* [User Stories / Use Cases] INCOMPLETE
 * [Updates](#Updates)
 * [Known Issues](#Known-Issues)
 * [Future Work](#Future-Work)
@@ -47,6 +48,15 @@ A Trello board was created to list and organise the objectives of the project. T
 ![Trello Board](https://github.com/jdovener/qa-project1/blob/dev/images/Trello%20Board.png)
 
 This was referred to and updated throughout the creation and documentation of the project in order to ensure no objectives were missed.
+
+# Risk Assessment
+
+Prior to beginning the project, a risk assessment was carried out. This was used to identify potential hazards, consider their implications and propose control measures for preventing/solving them. The risk assessment is shown below:
+
+![Risk Assessment](https://github.com/jdovener/qa-project1/blob/dev/images/Risk%20Assessment.png)
+
+The outlined control measures were implemented during the creation of the project.  
+The key included in the image explains the probability, impact and priority level of the potential hazards.
 
 # The App:
 Upon opening the app, the user is presented with the homepage:
@@ -107,15 +117,6 @@ INCOMPLETE
 # CI Pipeline
 
 INCOMPLETE
-
-# Risk Assessment
-
-Prior to beginning the project, a risk assessment was carried out. This was used to identify potential hazards, consider their implications and propose control measures for preventing/solving them. The risk assessment is shown below:
-
-![Risk Assessment](https://github.com/jdovener/qa-project1/blob/dev/images/Risk%20Assessment.png)
-
-The outlined control measures were implemented during the creation of the project.  
-The key included in the image explains the probability, impact and priority level of the potential hazards.
 
 # Updates
 
