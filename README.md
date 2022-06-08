@@ -2,12 +2,12 @@
 This GitHub repository contains my deliverable files for the QA DevOps fundamental project.
 
 ## Contents:
-* [Project Requirements](#Project-Requirements)  
+* [Project Requirements](#Project-Requirements)
 * [Project Design](#Project-Design)
 * [The App](#The-App)
-* [Testing](#Testing) IMCOMPLETE
+* [Testing](#Testing) INCOMPLETE
 * [CI Pipeline](#CI-Pipeline) INCOMPLETE
-* [Risk Assessment](#Risk-Assessment) INCOMPLETE
+* [Risk Assessment](#Risk-Assessment)
 * [Updates](#Updates)
 * [Known Issues](#Known-Issues)
 * [Future Work](#Future-Work)
@@ -27,7 +27,7 @@ The app I have chosen to build is a video games shop product and customer inform
 * Update specific products to show if they are in stock or out of stock, update order details to show if they are pending or delivered (update functionality).  
 * Delete records of products, customer details and payment details from the database (delete functionality).  
   
-The database for the MVP of this project is comprised of 4 tables: Products, Customers, Orders, Payment details. The database features 2 one-to-many relationships.  
+The database for the minimum viable product (MVP) of this project is comprised of 4 tables: Products, Customers, Orders, Payment details. The database features 2 one-to-many relationships.  
 The ERD for this MVP is shown below:
 
 ![ERD](https://github.com/jdovener/qa-project1/blob/dev/images/ERD.png)
@@ -41,6 +41,12 @@ In the future, the app would ideally have the ability to add more than one produ
 The future ERD is shown below:
 
 ![Future ERD](https://github.com/jdovener/qa-project1/blob/dev/images/Future%20ERD.png)
+
+A Trello board was created to list and organise the objectives of the project. The inital Trello board is shown below:
+
+![Trello Board](https://github.com/jdovener/qa-project1/blob/dev/images/Trello%20Board.png)
+
+This was referred to and updated throughout the creation and documentation of the project in order to ensure no objectives were missed.
 
 # The App:
 Upon opening the app, the user is presented with the homepage:
@@ -102,9 +108,14 @@ INCOMPLETE
 
 INCOMPLETE
 
-# Risk Assesment
+# Risk Assessment
 
-INCOMPLETE
+Prior to beginning the project, a risk assessment was carried out. This was used to identify potential hazards, consider their implications and propose control measures for preventing/solving them. The risk assessment is shown below:
+
+![Risk Assessment](https://github.com/jdovener/qa-project1/blob/dev/images/Risk%20Assessment.png)
+
+The outlined control measures were implemented during the creation of the project.  
+The key included in the image explains the probability, impact and priority level of the potential hazards.
 
 # Updates
 
