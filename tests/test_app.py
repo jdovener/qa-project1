@@ -55,11 +55,11 @@ class TestAddProduct(TestBase):
 
 class TestUpdateProduct(TestBase):
     def test_put_product(self):
-        response = self.client.put(url_for('update', product_id=1),
+        response = self.client.get(url_for('update', product_id=1),
         data = dict(title="pancakes"),
         follow_redirects = True
         )
-        assert response.status_code == 405
+        assert response.status_code == 200
 
 class TestDeleteProduct(TestBase):
     def test_delete_product(self):
@@ -101,46 +101,47 @@ class TestViewOrder(TestBase):
 class TestAddOrder(TestBase):
     def test_post_order(self):
         response = self.client.post(url_for('add_order'),
-        data = dict(total=10),
+        data = dict(date_ordered='2022-01-01', total=11, order_status=True, cust_id=1, product_id=1),
         follow_redirects = True
         )
-        self.assert500(response)
-        test_order = Order.query.filter_by(total=10).first()
-        assert test_order.total == 10
+        self.assert200(response)
+        self.assertIn(b'11', response.data)
 
-# class TestUpdateOrder(TestBase):
-#     def test_put_order(self):
-#         response = self.client.put(url_for('update_order', order_id=1),
-#         data = dict(total="pancakes"),
-#         follow_redirects = True
-#         )
-#         self.assert200(response)
+class TestUpdateOrder(TestBase):
+    def test_get_order(self):
+        response = self.client.get(url_for('update_order', order_id=1),
+        data = dict(total="pancakes"),
+        follow_redirects = True
+        )
+        self.assert200(response)
 
-# class TestDeleteOrder(TestBase):
-#     def test_delete_order(self):
-#         response = self.client.delete(url_for('delete_order', order_id=1)
-#         )
-#         self.assert405(response)
+class TestDeleteOrder(TestBase):
+    def test_delete_order(self):
+        response = self.client.get(url_for('delete_order', order_id=1),
+        follow_redirects = True
+        )
+        self.assert200(response)
 
 # Payment details routes tests
 
-# class TestViewPayment(TestBase):
-#     def test_get_payment(self):
-#         response = self.client.get(url_for('payment_details'))
-#         self.assert200(response)
-#         self.assertIn(b'11111111', response.data)
+class TestViewPayment(TestBase):
+    def test_get_payment(self):
+        response = self.client.get(url_for('payments'))
+        self.assert200(response)
+        self.assertIn(b'11111111', response.data)
 
-# class TestAddPayment(TestBase):
-#     def test_post_payment(self):
-#         response = self.client.post(url_for('add_payment'),
-#         data = dict(account_number=11111111),
-#         follow_redirects = True
-#         )
-#         self.assert500(response)
-#         self.assertIn(b'11111111', response.data)
+class TestAddPayment(TestBase):
+    def test_post_payment(self):
+        response = self.client.post(url_for('add_payment'),
+        data = dict(account_number=11111112, sort_code=111111, exp_date='2022-01-01', cvv=11111111, cust_id=11111111),
+        follow_redirects = True
+        )
+        self.assert200(response)
+        self.assertIn(b'11111112', response.data)
 
-# class TestDeletePayment(TestBase):
-#     def test_delete_payment(self):
-#         response = self.client.delete(url_for('delete_payment', account_number=11111111)
-#         )
-#         self.assert405(response)
+class TestDeletePayment(TestBase):
+    def test_delete_payment(self):
+        response = self.client.get(url_for('delete_payment', account_number=11111111),
+        follow_redirects = True
+        )
+        self.assert200(response)
