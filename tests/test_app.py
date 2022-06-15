@@ -63,7 +63,7 @@ class TestUpdateProduct(TestBase):
 
 class TestDeleteProduct(TestBase):
     def test_delete_product(self):
-        response = self.client.delete(url_for('delete', product_id=1)
+        response = self.client.get(url_for('delete', product_id=1)
         )
         assert response.status_code == 302
 
@@ -86,7 +86,7 @@ class TestAddCustomer(TestBase):
 
 class TestDeleteCustomer(TestBase):
     def test_delete_customer(self):
-        response = self.client.delete(url_for('delete_cust', customer_id=1)
+        response = self.client.get(url_for('delete_cust', customer_id=1)
         )
         assert response.status_code == 302
 

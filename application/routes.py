@@ -35,7 +35,7 @@ def update(product_id):
     db.session.commit()
     return redirect(url_for("products"))
 
-@app.route("/delete/<int:product_id>", methods=["DELETE"])
+@app.route("/delete/<int:product_id>")
 def delete(product_id):
     product = Product.query.filter_by(id=product_id).first()
     db.session.delete(product)
@@ -63,7 +63,7 @@ def add_cust():
     db.session.commit()
     return redirect(url_for("customers"))
 
-@app.route("/delete_cust/<int:customer_id>", methods=["DELETE"])
+@app.route("/delete_cust/<int:customer_id>")
 def delete_cust(customer_id):
     customer = Customer.query.filter_by(id=customer_id).first()
     db.session.delete(customer)

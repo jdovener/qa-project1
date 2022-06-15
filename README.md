@@ -92,11 +92,11 @@ The Orders page is shown below:
 
 The Orders page shows all orders currently entered into the database. On this page the user can:  
 * Add orders by populating the forms at the bottom of the page and pressing the 'Add' button.  
+    * The 'Customer ID' field is a foreign key from the Customers table in the database, this MUST be populated with an existing ID present in the Customer table or the app will not allow entry.  
+    * The 'Product ID' field is a foreign key from the Products table in the database, this MUST be populated with an existing ID present in the Product table or the app will not allow entry.
 * Update the status of an order to 'Pending' or 'Delivered' by pressing the 'Update' button beneath each entry. This is represented by either a yellow label or a green label beneath the product entry.  
 * Delete product entries by pressing the 'Delete' button beneath each entry.  
-  
-The 'Customer ID' field is a foreign key from the Customers table in the database, this must be populated with an existing ID present in the Customer table or the app will not allow entry.  
-The 'Product ID' field is a foreign key from the Products table in the database, this must be populated with an existing ID present in the Product table or the app will not allow entry.
+
 
 ---
 
@@ -106,13 +106,21 @@ The Payment Details page is shown below:
 
 The Payment Details page shows all customer payment details currently entered into the database. On this page the user can:  
 * Add customer payment details by populating the forms at the bottom of the page and pressing the 'Add' button.  
+    * The 'Customer ID' field is a foreign key from the Customers table in the database, this MUST be populated with an existing ID present in the Customer table or the app will not allow entry.
 * Delete customer payment details entries by pressing the 'Delete' button beneath each entry.  
-  
-The 'Customer ID' field is a foreign key from the Customers table in the database, this must be populated with an existing ID present in the Customer table or the app will not allow entry.
+
 
 # Testing
 
-## Unit Testing
+Testing is an essential part of the development process. Unit testing documentation can be found below. I hope to implement integration testing in the near future.
+
+### Unit Testing
+
+Unit testing is used to verify that individual aspects of the app function correctly (i.e functions/methods/routes etc). This is used to ensure that all create, read, update and delete fucntionality works as intended. 
+
+Pytest was used to conduct the unit testing. Below is an image of a pytest test session showing 15 tests passing successfully. The coverage report shows 100% coverage across the code base, verifying that everything is working correctly.
+
+![Pytest](https://github.com/jdovener/qa-project1/blob/dev/images/Pytest.png)
 
 # CI Pipeline
 
@@ -136,15 +144,18 @@ INCOMPLETE
 
 # Known Issues
 
-* If an entry is submitted on the Payment Details page with a customer id that is not currently present in the customer table, an error is thrown and the app does not redirect the user back automatically.
-* Similarly to above issue: If an entry is submitted on the Orders page with a customer/product id that is not currently present in the customer/product table, an error is thrown and the app does not redirect the user back automatically.
+* If an entry is submitted on the Payment Details page with a customer id that is not currently present in the customers table, an error is thrown and the app does not redirect the user back automatically.
+* Similarly to above issue: If an entry is submitted on the Orders page with a customer id/product id that is not currently present in the customers/products table, an error is thrown and the app does not redirect the user back automatically.
 
 # Future Work
 
 If I were to recreate this app, in addition to fixing the current known issues, I would like to implement the following changes:
 
+* Use flask forms to create form fields instead of using <a> tags.
 * Add the ability to update records in all tables without having to delete the entire entry and re-enter the updated information.
-* Add drop down menus to various input fields to increase efficiency for the user and reduce the chance of spelling mistakes.
+* Add drop down menus to various input fields.
+    * This would prevent the user from attempting to enter an incorrect customer id/product id as a foreign key in the Payment Details/Orders submission forms. This would be done by querying the database for present entries in relevant other tables and using the results to populate the dropdown.
+    * This would also increase efficiency for the user and reduce the chance of general spelling mistakes.
 * Improve stylisation of displayed database entries for easier readability
 * Add a max character limit to various input fields (such as the account number input field on the payment details page) to reduce the chance of errors.
 * Add the ability to create orders with multiple products on the Orders page. The input fields would also feature drop down menus for adding products/customer information. 
