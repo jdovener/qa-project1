@@ -47,7 +47,11 @@ A Trello board was created to list and organise the objectives of the project. T
 
 ![Trello Board](https://github.com/jdovener/qa-project1/blob/dev/images/Trello%20Board.png)
 
-This was referred to and updated throughout the creation and documentation of the project in order to ensure no objectives were missed.
+This was referred to and updated throughout the creation and documentation of the project in order to ensure no objectives were missed.  
+
+The trello board was updated to include Use Cases and User Stories, a screen shot of these columns are shown below. The trello board can be accessed [HERE](https://trello.com/b/t1pViKWS/qa-project-1-trello) for in-depth viewing.
+
+![Use User](https://github.com/jdovener/qa-project1/blob/dev/images/Use%20User.png)
 
 # Risk Assessment
 
