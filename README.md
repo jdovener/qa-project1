@@ -1,5 +1,13 @@
 # qa-project1 - 'QA Games Shop' App:  
-This GitHub repository contains my deliverable files for the QA DevOps fundamental project.
+This GitHub repository contains my deliverable files for the QA DevOps fundamental project.  
+
+Please note that this application requires Python3 in order to run and Pip3 in order to install the dependencies.  
+
+In order to install the dependencies, open the terminal, ensure you are in the top layer of the file structure and run the following command:
+
+```
+pip3 install -r requirements.txt
+```
 
 ## Contents:
 * [Project Requirements](#Project-Requirements)
