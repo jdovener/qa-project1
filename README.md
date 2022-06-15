@@ -16,7 +16,6 @@ pip3 install -r requirements.txt
 * [The App](#The-App)
 * [Testing](#Testing) INCOMPLETE
 * [CI Pipeline](#CI-Pipeline) INCOMPLETE
-* [User Stories / Use Cases] INCOMPLETE
 * [Updates](#Updates)
 * [Known Issues](#Known-Issues)
 * [Future Work](#Future-Work)
@@ -152,7 +151,10 @@ INCOMPLETE
     * Minor bug fix on payment page. Customer ID field is now displaying.
 
 * 02/06/2022
-    * Improved readability of README.md compilation by adding line breaks
+    * Improved readability of README.md compilation by adding line breaks.
+
+* 15/06/2022
+    * Added dependencies file and relevant information to README file.
 
 # Known Issues
 
