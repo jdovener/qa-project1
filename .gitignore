@@ -104,6 +104,7 @@ celerybeat.pid
 # Environments
 .env
 .venv
+/venv
 env/
 venv/
 ENV/
@@ -127,3 +128,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# test database
+*.db
+
+#chromedriver
+chromedriver

@@ -14,7 +14,7 @@ pip3 install -r requirements.txt
 * [Project Design](#Project-Design)
 * [Risk Assessment](#Risk-Assessment)
 * [The App](#The-App)
-* [Testing](#Testing) INCOMPLETE
+* [Testing](#Testing)
 * [CI Pipeline](#CI-Pipeline) INCOMPLETE
 * [Updates](#Updates)
 * [Known Issues](#Known-Issues)
@@ -123,7 +123,7 @@ The Payment Details page shows all customer payment details currently entered in
 
 # Testing
 
-Testing is an essential part of the development process. Unit testing documentation can be found below. I hope to implement integration testing in the near future.
+Testing is an essential part of the development process. Unit testing and Integreation testing documentation can be found below.
 
 ### Unit Testing
 
@@ -132,6 +132,27 @@ Unit testing is used to verify that individual aspects of the app function corre
 Pytest was used to conduct the unit testing. Below is an image of a pytest test session showing 15 tests passing successfully. The coverage report shows 100% coverage across the code base, verifying that everything is working correctly.
 
 ![Pytest](https://github.com/jdovener/qa-project1/blob/dev/images/Pytest.png)
+
+### Integration Testing
+
+Integration testing is used to test the app in an 'as-live' environment. This method is able to simulate mouse clicks and key board input. I have written integration tests using selenium which test every button and input field on every page is functioning as intended.
+
+The images below show pytest running the aformentioned tests. 20 tests pass successfully - The first 15 tests are unit tests, the remaining 5 tests are integration tests). 
+
+![Integration1](https://github.com/jdovener/qa-project1/blob/dev/images/Integration1.png)
+![Integration2](https://github.com/jdovener/qa-project1/blob/dev/images/Integration2.png)
+
+I have omitted the explanation regarding the warnings as they are not relevant to this project. The warnings suggest that these tests may not be compatible with future versions of Ubuntu.
+
+### Instructions on how to run tests
+
+In order to run these tests, I open a terminal and navigate to the top layer of the project. I then run the following command:
+
+'''
+python3 -m pytest --cov --cov-report term-missing
+'''
+
+This command runs pytest on any files beginning with the word 'test'. It also makes the terminal produce a coverage report to show what percentage of the code has been covered. It is important to aim for 100% coverage to ensure everything works as intended. If areas of code have not been covered by the test, the 'term-missing' argument will provide the user with details of which file the missed code is in and which lines the missed code occupies.
 
 # CI Pipeline
 
