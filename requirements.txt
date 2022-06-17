@@ -7,3 +7,4 @@ pymysql
 pytest
 pytest-cov
 selenium
+gunicorn

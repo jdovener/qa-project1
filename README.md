@@ -1,21 +1,13 @@
 # qa-project1 - 'QA Games Shop' App:  
 This GitHub repository contains my deliverable files for the QA DevOps fundamental project.  
 
-Please note that this application requires Python3 in order to run and Pip3 in order to install the dependencies.  
-
-In order to install the dependencies, open the terminal, ensure you are in the top layer of the file structure and run the following command:
-
-```
-pip3 install -r requirements.txt
-```
-
 ## Contents:
 * [Project Requirements](#Project-Requirements)
 * [Project Design](#Project-Design)
 * [Risk Assessment](#Risk-Assessment)
 * [The App](#The-App)
 * [Testing](#Testing)
-* [CI Pipeline](#CI-Pipeline) INCOMPLETE
+* [CI Pipeline](#CI-Pipeline)
 * [Updates](#Updates)
 * [Known Issues](#Known-Issues)
 * [Future Work](#Future-Work)
@@ -156,7 +148,24 @@ This command runs pytest on any files beginning with the word 'test'. It also ma
 
 # CI Pipeline
 
-INCOMPLETE
+One of the project constraints required the project to implement a CI pipeline. The stages of this pipeline include: project tracking, version control, development environment and build server.  
+  
+For project tracking, trello was used to create a tracking board. Examples of this and access to the trello board can be found in the [Project Design](#Project-Design) section of this README document.
+
+Git was used for the version control stage of the pipline. The project repository was hosted on GitHub. Using Git allows for the project to be built incrementally and saves a history of all previous commits. These previous commits can be rolled back to in the event of errors to allow access to previous versions of the project.
+
+A Python3 virtual environment (venv) was used as a development environment. This was hosted on a virtual machine (on Google Cloud Platform) running Ubuntu 20.04. A venv allows for seperation of concerns meaning pip installs can be performed without affecting andy conflicting pip installs within the same machine.
+
+Jenkins was used as a build server in order to automate the tests and the build. This is achieved by creating a freestyle project via Jenkins, this freestyle project executes the following:
+1. Creates a venv, sources into the venv
+2. Installs project requirements into the venv
+3. Holds a secret key to access the SQL database (instead of hardcoding a password into the application project)
+4. Runs unit tests and integration tests
+5. Runs the app
+
+An illustration of the full pipeline is shown below:
+
+![Infrastructure](https://github.com/jdovener/qa-project1/blob/dev/images/Infrastructure.png)
 
 # Updates
 
