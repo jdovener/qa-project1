@@ -156,12 +156,15 @@ Git was used for the version control stage of the pipline. The project repositor
 
 A Python3 virtual environment (venv) was used as a development environment. This was hosted on a virtual machine (on Google Cloud Platform) running Ubuntu 20.04. A venv allows for seperation of concerns meaning pip installs can be performed without affecting andy conflicting pip installs within the same machine.
 
-Jenkins was used as a build server in order to automate the tests and the build. This is achieved by creating a freestyle project via Jenkins, this freestyle project executes the following:
+Jenkins was used as a build server in order to automate the tests and the build. This is achieved by creating a freestyle project via Jenkins, the project uses gunicorn to run the app. A webhook is used to continuously integrate changes.  
+  
+This freestyle project executes the following steps:
 1. Creates a venv, sources into the venv
 2. Installs project requirements into the venv
 3. Holds a secret key to access the SQL database (instead of hardcoding a password into the application project)
 4. Runs unit tests and integration tests
 5. Runs the app
+6. Uses a webhook to continuously integrate changes
 
 An illustration of the full pipeline is shown below:
 
