@@ -211,4 +211,4 @@ If I were to recreate this app, in addition to fixing the current known issues, 
     * This would also increase efficiency for the user and reduce the chance of general spelling mistakes.
 * Improve stylisation of displayed database entries for easier readability
 * Add a max character limit to various input fields (such as the account number input field on the payment details page) to reduce the chance of errors.
-* Add the ability to create orders with multiple products on the Orders page. The input fields would also feature drop down menus for adding products/customer information. 
+* Add the ability to create orders with multiple products on the Orders page. The input fields would also feature drop down menus for adding products/customer information.
